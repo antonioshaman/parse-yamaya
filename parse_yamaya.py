@@ -87,7 +87,7 @@ async def get_kin_data(year: int, month: int, day: int):
             return {"error": str(e)}
 
 # === FastAPI route ===
-@app.get("/parse-yamaya")
+
 async def parse_yamaya(date: str = Query(..., example="1992-07-30")):
     try:
         year, month, day = map(int, date.split("-"))
@@ -96,6 +96,7 @@ async def parse_yamaya(date: str = Query(..., example="1992-07-30")):
     except Exception as e:
         return JSONResponse(content={"error": str(e)})
 
+@app.get("/parse-yamaya")
 async def root():
     return {"message": "✅ FastAPI работает!"}
 
