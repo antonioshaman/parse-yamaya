@@ -1,3 +1,5 @@
+import os
+import uvicorn
 import asyncio
 from datetime import datetime
 import random
@@ -93,3 +95,10 @@ async def parse_yamaya(date: str = Query(..., example="1992-07-30")):
         return JSONResponse(content=result)
     except Exception as e:
         return JSONResponse(content={"error": str(e)})
+
+async def root():
+    return {"message": "✅ FastAPI работает!"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("parse_yamaya:app", host="0.0.0.0", port=port)
