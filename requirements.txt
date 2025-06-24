@@ -1,3 +1,4 @@
 fastapi
 uvicorn
 playwright
+RUN python3 -m playwright install
